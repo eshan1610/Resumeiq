@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResumeIQ — Beat the ATS. Land the Interview.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Razorpay Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">Resume<span>IQ</span></a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#upload" class="btn-nav">Analyze My Resume →</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#how-it-works">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#upload" class="btn-nav">Analyze My Resume →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-lines"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI-Powered Resume Intelligence
+      </div>
+
+      <h1 class="hero-title">
+        Your Resume is Getting<br />
+        <span class="gradient-text">Rejected by a Bot</span><br />
+        Before Humans See It
+      </h1>
+
+      <p class="hero-subtitle">
+        75% of resumes never reach a recruiter. ResumeIQ analyzes your resume against ATS algorithms, scores your hiring signals, and tells you exactly what to fix — in under 30 seconds.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#upload" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Scan My Resume Free
+        </a>
+        <a href="#how-it-works" class="btn-ghost">See how it works ↓</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="75">0</span><span class="stat-unit">%</span>
+          <span class="stat-label">Resumes auto-rejected</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="12">0</span><span class="stat-unit">s</span>
+          <span class="stat-label">Avg recruiter scan time</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span><span class="stat-unit">x</span>
+          <span class="stat-label">More callbacks with our fixes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume Score Card Mockup -->
+    <div class="hero-mockup">
+      <div class="mockup-card">
+        <div class="mockup-header">
+          <div class="mockup-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="mockup-title">Resume Analysis</span>
+        </div>
+        <div class="mockup-score-ring">
+          <svg viewBox="0 0 120 120" class="ring-svg">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="url(#scoreGrad)" stroke-width="8"
+              stroke-dasharray="314" stroke-dashoffset="200" stroke-linecap="round"
+              transform="rotate(-90 60 60)" class="ring-progress"/>
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="ring-center">
+            <span class="ring-score" id="ring-score">36</span>
+            <span class="ring-label">ATS Score</span>
+          </div>
+        </div>
+        <div class="mockup-bars">
+          <div class="bar-row">
+            <span>ATS Compatibility</span>
+            <div class="bar-track"><div class="bar-fill" style="width:28%;background:linear-gradient(90deg,#ef4444,#f97316)"></div></div>
+            <span class="bar-val red">28</span>
+          </div>
+          <div class="bar-row">
+            <span>Keywords Match</span>
+            <div class="bar-track"><div class="bar-fill" style="width:41%;background:linear-gradient(90deg,#f59e0b,#eab308)"></div></div>
+            <span class="bar-val yellow">41</span>
+          </div>
+          <div class="bar-row">
+            <span>Impact Language</span>
+            <div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,#6366f1,#a855f7)"></div></div>
+            <span class="bar-val purple">55</span>
+          </div>
+          <div class="bar-row">
+            <span>Readability</span>
+            <div class="bar-track"><div class="bar-fill" style="width:63%;background:linear-gradient(90deg,#6366f1,#a855f7)"></div></div>
+            <span class="bar-val purple">63</span>
+          </div>
+        </div>
+        <div class="mockup-alert">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>4 critical issues found</span>
+        </div>
+      </div>
+
+      <!-- After card -->
+      <div class="mockup-card mockup-after">
+        <div class="after-badge">After ResumeIQ</div>
+        <div class="after-score-row">
+          <div class="after-ring">
+            <svg viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="url(#afterGrad)" stroke-width="6"
+                stroke-dasharray="201" stroke-dashoffset="20" stroke-linecap="round"
+                transform="rotate(-90 40 40)"/>
+              <defs>
+                <linearGradient id="afterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#22c55e"/>
+                  <stop offset="100%" stop-color="#10b981"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="after-ring-center">
+              <span class="after-score-num">91</span>
+            </div>
+          </div>
+          <div class="after-info">
+            <p class="after-title">Interview Ready</p>
+            <p class="after-sub">Top 5% of applicants</p>
+          </div>
+        </div>
+        <div class="after-checks">
+          <div class="check-item"><span class="check-icon">✓</span> ATS optimized</div>
+          <div class="check-item"><span class="check-icon">✓</span> Keywords matched</div>
+          <div class="check-item"><span class="check-icon">✓</span> Impact quantified</div>
+          <div class="check-item"><span class="check-icon">✓</span> Format corrected</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF TICKER -->
+  <section class="ticker-section">
+    <div class="ticker-label">Trusted by job seekers at</div>
+    <div class="ticker-track">
+      <div class="ticker-inner">
+        <span>Google</span><span>Amazon</span><span>Microsoft</span><span>Flipkart</span>
+        <span>Swiggy</span><span>Razorpay</span><span>CRED</span><span>Zomato</span>
+        <span>Infosys</span><span>TCS</span><span>Deloitte</span><span>McKinsey</span>
+        <!-- duplicated for seamless loop -->
+        <span>Google</span><span>Amazon</span><span>Microsoft</span><span>Flipkart</span>
+        <span>Swiggy</span><span>Razorpay</span><span>CRED</span><span>Zomato</span>
+        <span>Infosys</span><span>TCS</span><span>Deloitte</span><span>McKinsey</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="problem-section reveal">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-text">
+          <div class="section-badge">The Reality</div>
+          <h2>The hiring system is broken.<br /><span class="gradient-text">We fix your side of it.</span></h2>
+          <p>Companies use ATS (Applicant Tracking Systems) to filter resumes automatically. Most candidates have no idea their resume is being scored — and failing — before a human ever reads it.</p>
+          <ul class="problem-list">
+            <li>
+              <span class="problem-icon">⚠</span>
+              <div>
+                <strong>Invisible filtering</strong>
+                <p>ATS bots rank your resume by keyword density, formatting rules, and file compatibility. Miss one rule — you're out.</p>
+              </div>
+            </li>
+            <li>
+              <span class="problem-icon">⏱</span>
+              <div>
+                <strong>12-second human window</strong>
+                <p>If your resume passes the bot, a recruiter spends an average of 12 seconds scanning it. First impressions are everything.</p>
+              </div>
+            </li>
+            <li>
+              <span class="problem-icon">📉</span>
+              <div>
+                <strong>Generic resumes fail</strong>
+                <p>One resume sent to 100 jobs is a strategy that fails. Role-specific optimization is what gets interviews.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="problem-visual">
+          <div class="funnel">
+            <div class="funnel-step f1">
+              <span class="funnel-num">500</span>
+              <span class="funnel-label">Applications received</span>
+            </div>
+            <div class="funnel-arrow">↓</div>
+            <div class="funnel-step f2">
+              <span class="funnel-num">125</span>
+              <span class="funnel-label">Pass ATS screening</span>
+            </div>
+            <div class="funnel-arrow">↓</div>
+            <div class="funnel-step f3">
+              <span class="funnel-num">25</span>
+              <span class="funnel-label">Reviewed by humans</span>
+            </div>
+            <div class="funnel-arrow">↓</div>
+            <div class="funnel-step f4 highlight-step">
+              <span class="funnel-num">5</span>
+              <span class="funnel-label">Get interviews</span>
+            </div>
+            <div class="funnel-callout">
+              Be in the <strong>top 1%</strong> with ResumeIQ
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">Process</div>
+        <h2>Three steps to a <span class="gradient-text">hire-ready resume</span></h2>
+        <p>No account needed. No fluff. Just actionable intelligence in under a minute.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-number">01</div>
+          <div class="step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Upload Your Resume</h3>
+          <p>Drop your PDF or Word file. No account, no email, no friction. Your file is processed securely and deleted after analysis.</p>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-number">02</div>
+          <div class="step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <h3>Get Your IQ Score</h3>
+          <p>Our AI engine scans for 47 hiring signals across ATS compatibility, keywords, impact language, formatting, and recruiter appeal.</p>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-number">03</div>
+          <div class="step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Fix & Relaunch</h3>
+          <p>Get a precise, line-by-line improvement plan. Unlock the full AI rewrite for ₹499 — one flat fee, no subscription.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">What We Analyze</div>
+        <h2>47 signals. <span class="gradient-text">One score.</span> Zero guessing.</h2>
+        <p>Every dimension that determines whether you get an interview or a rejection.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+          <h3>ATS Compatibility</h3>
+          <p>Checks file format, font choices, column layouts, tables, graphics, and header/footer text that ATS bots can't parse.</p>
+          <div class="feature-tags"><span>Format</span><span>Parsing</span><span>Structure</span></div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#a855f7,#ec4899)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3>Keyword Matching</h3>
+          <p>Compares your resume against role-specific keyword databases. Identifies missing power words that trigger ATS ranking.</p>
+          <div class="feature-tags"><span>Density</span><span>Relevance</span><span>Skills</span></div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#06b6d4,#6366f1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Impact Language</h3>
+          <p>Flags weak verbs, passive voice, and vague descriptions. Quantifies how many bullet points have measurable achievements.</p>
+          <div class="feature-tags"><span>Action Verbs</span><span>Metrics</span><span>Clarity</span></div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Credibility Score</h3>
+          <p>Evaluates brand names, certifications, education signals, and authority markers that build recruiter trust fast.</p>
+          <div class="feature-tags"><span>Brands</span><span>Certs</span><span>Authority</span></div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#22c55e,#06b6d4)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Readability</h3>
+          <p>Measures scanability — white space, section clarity, bullet length, font hierarchy, and 12-second recruiter test performance.</p>
+          <div class="feature-tags"><span>Scanability</span><span>Layout</span><span>Hierarchy</span></div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#ec4899,#f59e0b)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Interview Potential</h3>
+          <p>Composite score predicting your callback probability based on all signals combined. Benchmarked against 50,000+ resumes.</p>
+          <div class="feature-tags"><span>Benchmarks</span><span>Prediction</span><span>Ranking</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="compare-section reveal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Results</div>
+        <h2>See the <span class="gradient-text">transformation</span></h2>
+        <p>Real before/after from a software engineer resume optimized in 8 minutes.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card before">
+          <div class="compare-label">Before ResumeIQ</div>
+          <div class="compare-score-display">
+            <span class="big-score red-score">34</span>
+            <span class="big-label">/ 100</span>
+          </div>
+          <ul class="compare-list bad">
+            <li><span>✗</span> No quantified achievements</li>
+            <li><span>✗</span> Missing 14 role keywords</li>
+            <li><span>✗</span> Two-column layout (ATS fail)</li>
+            <li><span>✗</span> Weak verbs: "helped", "worked on"</li>
+            <li><span>✗</span> Generic summary paragraph</li>
+            <li><span>✗</span> 4-page resume (too long)</li>
+          </ul>
+          <div class="compare-outcome red-outcome">❌ Auto-rejected by 9 of 10 ATS</div>
+        </div>
+        <div class="compare-arrow-col">
+          <div class="compare-arrow">→</div>
+          <span>8 minutes</span>
+        </div>
+        <div class="compare-card after">
+          <div class="compare-label">After ResumeIQ</div>
+          <div class="compare-score-display">
+            <span class="big-score green-score">91</span>
+            <span class="big-label">/ 100</span>
+          </div>
+          <ul class="compare-list good">
+            <li><span>✓</span> 6 metrics added ("↑ 40% revenue")</li>
+            <li><span>✓</span> All high-priority keywords included</li>
+            <li><span>✓</span> Single-column ATS-friendly format</li>
+            <li><span>✓</span> Power verbs: "drove", "architected"</li>
+            <li><span>✓</span> Role-targeted summary added</li>
+            <li><span>✓</span> Trimmed to 1 page, high density</li>
+          </ul>
+          <div class="compare-outcome green-outcome">✅ Passed 10 of 10 ATS systems</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">Stories</div>
+        <h2>From rejected to <span class="gradient-text">recruited</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"I applied to 80 companies and got zero callbacks. After ResumeIQ, I had 4 interviews in the first week. The keyword suggestions were eye-opening."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)">A</div>
+            <div>
+              <strong>Aditya Sharma</strong>
+              <span>SDE at Razorpay</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"My resume was stuck at 28/100 — the two-column layout was invisibly killing me. One fix later, 91/100 and I had a Google phone screen within 10 days."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#22c55e,#06b6d4)">P</div>
+            <div>
+              <strong>Priya Menon</strong>
+              <span>Product Manager at Google</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Worth every rupee. The impact language section alone changed how I write bullets. I went from 'helped build' to 'architected and deployed' — totally different signal."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">R</div>
+            <div>
+              <strong>Ravi Iyer</strong>
+              <span>Data Scientist at Amazon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOAD / CTA SECTION -->
+  <section class="upload-section" id="upload">
+    <div class="container">
+      <div class="upload-card reveal">
+        <div class="upload-glow"></div>
+        <div class="upload-content">
+          <div class="section-badge">Free Analysis</div>
+          <h2>Find out your resume's<br /><span class="gradient-text">real ATS score</span></h2>
+          <p>No sign-up. No credit card. Just drop your resume below.</p>
+
+          <div class="drop-zone" id="drop-zone">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Drop your resume here</p>
+            <span>PDF, DOCX, or DOC — max 5MB</span>
+            <input type="file" id="file-input" accept=".pdf,.doc,.docx" hidden />
+            <button class="btn-upload" onclick="document.getElementById('file-input').click()">
+              Browse Files
+            </button>
+          </div>
+
+          <p class="upload-note">🔒 Your resume is analyzed locally and never stored. We take privacy seriously.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">Pricing</div>
+        <h2>One resume. <span class="gradient-text">One flat price.</span><br />No subscription.</h2>
+        <p>The free scan tells you what's wrong. The full report tells you exactly how to fix it.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div class="pricing-badge-free">Free</div>
+          <div class="pricing-price">₹0</div>
+          <p class="pricing-desc">Instant ATS score + top 3 issues</p>
+          <ul class="pricing-features">
+            <li><span>✓</span> Upload resume (PDF/DOCX)</li>
+            <li><span>✓</span> ATS compatibility score</li>
+            <li><span>✓</span> Top 3 critical issues</li>
+            <li><span>✓</span> Keyword gap indicator</li>
+            <li class="dim"><span>–</span> Full 47-signal breakdown</li>
+            <li class="dim"><span>–</span> Line-by-line fix plan</li>
+            <li class="dim"><span>–</span> AI rewrite suggestions</li>
+            <li class="dim"><span>–</span> Role-specific keyword list</li>
+          </ul>
+          <a href="#upload" class="btn-secondary">Get Free Scan</a>
+        </div>
+        <div class="pricing-card featured reveal">
+          <div class="pricing-glow-border"></div>
+          <div class="pricing-badge-pro">Most Popular</div>
+          <div class="pricing-price">₹499</div>
+          <p class="pricing-desc">Full analysis + AI fix plan</p>
+          <ul class="pricing-features">
+            <li><span>✓</span> Everything in Free</li>
+            <li><span>✓</span> Full 47-signal breakdown</li>
+            <li><span>✓</span> Line-by-line improvement plan</li>
+            <li><span>✓</span> AI-powered rewrite suggestions</li>
+            <li><span>✓</span> Role-specific keyword list</li>
+            <li><span>✓</span> ATS simulator test (10 systems)</li>
+            <li><span>✓</span> PDF download of optimized resume</li>
+            <li><span>✓</span> 30-day revision access</li>
+          </ul>
+          <a href="#upload" class="btn-primary">Get Full Report →</a>
+          <p class="pricing-note">One-time payment. No renewal, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">FAQ</div>
+        <h2>Frequently asked <span class="gradient-text">questions</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is the free scan really free — no credit card?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, completely free. No email, no card, no account. You upload your resume, get your ATS score and top 3 issues in under 30 seconds. We only ask for payment if you want the full 47-signal breakdown and AI fix plan.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is my resume data private and secure?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Your resume is analyzed in memory and never written to permanent storage. We do not sell, share, or retain your data. The file is deleted from our servers within 60 seconds of analysis completion.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What file formats do you support?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We support PDF, DOC, and DOCX files up to 5MB. We recommend PDF for the most accurate analysis, as it preserves formatting exactly as intended.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What is an "ATS" and why does it matter?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>An Applicant Tracking System (ATS) is software that companies use to automatically filter and rank job applications. Systems like Workday, Greenhouse, Lever, and Taleo are used by 99% of Fortune 500 companies. If your resume isn't formatted for these systems, it never reaches a human recruiter — regardless of how qualified you are.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How is ResumeIQ different from free tools like Jobscan?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Most tools only do keyword matching. ResumeIQ analyzes 47 signals across ATS compatibility, impact language, formatting, credibility, and recruiter appeal. We also provide a concrete, prioritized fix list — not just a score. And we charge a one-time ₹499 for the full report — never a monthly subscription.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if I'm not happy with the results?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We offer a full refund within 7 days, no questions asked. If our analysis doesn't help you improve your resume score by at least 20 points, email us and we'll refund you immediately.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta reveal">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="final-orb"></div>
+        <div class="section-badge">Get Started</div>
+        <h2>Stop sending resumes<br /><span class="gradient-text">into the void.</span></h2>
+        <p>Find out your ATS score in 30 seconds — free, no signup, no card.</p>
+        <a href="#upload" class="btn-primary btn-large">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Scan My Resume Free
+        </a>
+        <p class="final-note">No account needed · Results in 30 seconds · 100% private</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Resume<span>IQ</span></a>
+          <p>AI-powered resume intelligence for the modern job seeker.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#upload">Free Scan</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">Resume Templates</a>
+          <a href="#">ATS Guide</a>
+          <a href="#">Blog</a>
+          <a href="#">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ResumeIQ. Built with ❤ for job seekers everywhere.</p>
+        <p>Made in India 🇮🇳</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       FULL REPORT MODAL
+  ============================================= -->
+  <div class="report-overlay" id="report-overlay" aria-modal="true" role="dialog" hidden>
+    <div class="report-modal" id="report-modal">
+
+      <!-- Close -->
+      <button class="report-close" id="report-close" aria-label="Close report">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Header -->
+      <div class="report-header">
+        <div class="report-header-left">
+          <div class="report-logo">Resume<span>IQ</span> — Full Report</div>
+          <p class="report-date" id="report-date"></p>
+        </div>
+        <button class="btn-download" id="btn-download" onclick="downloadReport()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </button>
+      </div>
+
+      <!-- Score Hero -->
+      <div class="report-score-hero">
+        <div class="report-ring-wrap">
+          <svg viewBox="0 0 160 160" class="report-ring-svg">
+            <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
+            <circle cx="80" cy="80" r="68" fill="none" stroke="url(#reportGrad)" stroke-width="10"
+              stroke-dasharray="427" stroke-dashoffset="427" stroke-linecap="round"
+              transform="rotate(-90 80 80)" id="report-ring-circle"/>
+            <defs>
+              <linearGradient id="reportGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#6366f1" id="grad-stop-1"/>
+                <stop offset="100%" stop-color="#a855f7" id="grad-stop-2"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="report-ring-center">
+            <span class="report-big-score" id="report-big-score">—</span>
+            <span class="report-grade-badge" id="report-grade-badge">—</span>
+            <span class="report-ring-label">ATS Score</span>
+          </div>
+        </div>
+        <div class="report-hero-meta">
+          <p class="report-summary" id="report-summary"></p>
+          <div class="report-callback" id="report-callback"></div>
+          <div class="report-meta-row" id="report-meta-row"></div>
+        </div>
+      </div>
+
+      <!-- Category Breakdown -->
+      <div class="report-section">
+        <h3 class="report-section-h">Score Breakdown</h3>
+        <div class="report-categories" id="report-categories"></div>
+      </div>
+
+      <!-- Critical Issues -->
+      <div class="report-section" id="section-issues">
+        <h3 class="report-section-h">
+          <span class="report-section-icon red-icon">⚠</span> Critical Issues
+        </h3>
+        <ul class="report-issue-list" id="report-issues"></ul>
+      </div>
+
+      <!-- Top Fixes -->
+      <div class="report-section" id="section-fixes">
+        <h3 class="report-section-h">
+          <span class="report-section-icon purple-icon">🔧</span> Your Fix Plan — Priority Order
+        </h3>
+        <div class="report-fixes" id="report-fixes"></div>
+      </div>
+
+      <!-- Keywords -->
+      <div class="report-section">
+        <h3 class="report-section-h">
+          <span class="report-section-icon cyan-icon">🔑</span> Keyword Intelligence
+        </h3>
+        <div class="report-keywords-grid">
+          <div class="kw-block">
+            <p class="kw-title green-text">✓ Found in your resume</p>
+            <div class="kw-tags" id="kw-found"></div>
+          </div>
+          <div class="kw-block">
+            <p class="kw-title red-text">✗ Missing — add these</p>
+            <div class="kw-tags" id="kw-missing"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language Upgrade -->
+      <div class="report-section">
+        <h3 class="report-section-h">
+          <span class="report-section-icon yellow-icon">⚡</span> Language Upgrade
+        </h3>
+        <div class="report-verbs-grid" id="report-verbs-grid"></div>
+      </div>
+
+      <!-- Format Warnings -->
+      <div class="report-section" id="section-format">
+        <h3 class="report-section-h">
+          <span class="report-section-icon orange-icon">📋</span> Format Warnings
+        </h3>
+        <ul class="report-format-list" id="report-format"></ul>
+      </div>
+
+      <!-- Strengths -->
+      <div class="report-section">
+        <h3 class="report-section-h">
+          <span class="report-section-icon green-icon">★</span> Your Strengths
+        </h3>
+        <div class="report-strengths" id="report-strengths"></div>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="report-footer-cta">
+        <p>Apply these fixes, re-scan for free, and watch your score climb to 90+</p>
+        <button class="btn-primary" onclick="closeReport(); document.getElementById('upload').scrollIntoView({behavior:'smooth'});">
+          Re-scan My Resume Free →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

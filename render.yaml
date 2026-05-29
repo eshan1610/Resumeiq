@@ -1,0 +1,51 @@
+# Render deployment config
+# Docs: https://render.com/docs/render-yaml-spec
+#
+# ─── How to use ───────────────────────────────────────────────────────────────
+# 1. Push this repo to GitHub
+# 2. Go to https://dashboard.render.com → New → Blueprint
+# 3. Connect your GitHub repo — Render finds this file automatically
+# 4. After deploy, copy the service URL (e.g. https://resumeiq-api.onrender.com)
+# 5. Paste it into config.js as PROD_API_URL
+# 6. Set secret env vars in the Render dashboard (never commit them):
+#    ANTHROPIC_API_KEY, RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, ALLOWED_ORIGIN
+# ──────────────────────────────────────────────────────────────────────────────
+
+services:
+  - type: web
+    name: resumeiq-api
+    runtime: node
+    plan: free                        # upgrade to starter ($7/mo) to avoid cold starts
+    region: singapore                 # closest to India for low latency
+    buildCommand: cd backend && npm install --production
+    startCommand: cd backend && node server.js
+    healthCheckPath: /api/analyze/health
+
+    envVars:
+      # ── Non-secret config (safe to commit) ────────────────────────────────
+      - key: NODE_ENV
+        value: production
+
+      - key: PORT
+        value: 10000                  # Render assigns port via $PORT; this is the default
+
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000                 # 15 minutes
+
+      - key: RATE_LIMIT_MAX
+        value: 50                     # requests per window per IP
+
+      # ── Secret config — set manually in Render dashboard ──────────────────
+      # DO NOT put real values here. Set these in:
+      # Render Dashboard → resumeiq-api → Environment → Add env var
+      - key: ANTHROPIC_API_KEY
+        sync: false                   # sync:false = Render will prompt you to enter it
+
+      - key: RAZORPAY_KEY_ID
+        sync: false
+
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+
+      - key: ALLOWED_ORIGIN
+        sync: false                   # set to your Vercel URL e.g. https://resumeiq.vercel.app
