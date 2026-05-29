@@ -6,7 +6,7 @@
  * Dev:   nodemon server.js
  */
 
-require('dotenv').config();
+require('dotenv').config({ override: true }); // override: true ensures .env values always win over shell env
 
 const express = require('express');
 const cors = require('cors');
